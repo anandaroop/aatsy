@@ -15,7 +15,7 @@ namespace :data do
   end
 
   desc "Import all tables"
-  task import: ["import:subjects"]
+  task import: ["import:subjects", "import:terms"]
 
   namespace :import do
     desc "The subject table is the base table for all AAT records"
@@ -23,6 +23,15 @@ namespace :data do
       database = ActiveRecord::Base.connection.current_database
       path = File.join(Rails.root, "data", "SUBJECT.out")
       command = %Q{psql #{database} -c "COPY subjects (facet_code, legacy_id, merged_stat, parent_key, record_type, sort_order, special_proj, subject_id) FROM '#{path}' DELIMITER E'\t'"}
+      puts command
+      system command
+    end
+
+    desc "The term table contains the various vocabulary entries ('terms' in AAT) for each subject record"
+    task terms: :environment do
+      database = ActiveRecord::Base.connection.current_database
+      path = File.join(Rails.root, "data", "TERM.out")
+      command = %Q{psql #{database} -c "COPY terms (aacr2_flag, display_date, display_name, display_order, end_date, historic_flag, other_flags, preferred, start_date, subject_id, term, term_id, vernacular) FROM '#{path}' DELIMITER E'\t'"}
       puts command
       system command
     end
