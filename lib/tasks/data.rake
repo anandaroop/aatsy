@@ -15,7 +15,7 @@ namespace :data do
   end
 
   desc "Import all tables"
-  task import: ["import:subjects", "import:terms", "import:subject_rels"]
+  task import: ["import:subjects", "import:terms", "import:subject_rels", "import:associative_rels"]
 
   namespace :import do
     desc "The subject table is the base table for all AAT records"
@@ -41,6 +41,15 @@ namespace :data do
       database = ActiveRecord::Base.connection.current_database
       path = File.join(Rails.root, "data", "SUBJECT_RELS.out")
       command = %Q{psql #{database} -c "COPY subject_rels (display_date, end_date, historic_flag, preferred, rel_type, start_date, subjecta_id, subjectb_id, hier_rel_type) FROM '#{path}' DELIMITER E'\t'"}
+      puts command
+      system command
+    end
+
+    desc "The associative relationships table stores all AAT subject-to-subject relationships (other than parent/child relationships)"
+    task associative_rels: :environment do
+      database = ActiveRecord::Base.connection.current_database
+      path = File.join(Rails.root, "data", "ASSOCIATIVE_RELS.out")
+      command = %Q{psql #{database} -c "COPY associative_rels (display_date, end_date, historic_flag, rel_type_code, start_date, subjecta_id, subjectb_id) FROM '#{path}' DELIMITER E'\t'"}
       puts command
       system command
     end

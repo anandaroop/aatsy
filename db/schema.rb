@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_231655) do
+ActiveRecord::Schema.define(version: 2021_02_11_185659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "associative_rels", comment: "The associative relationships table stores all AAT subject-to-subject relationships (other than parent/child relationships).", force: :cascade do |t|
+    t.string "display_date", comment: "Label for relationship date information"
+    t.string "end_date", comment: "Historical end date of relationship"
+    t.string "historic_flag", comment: "Flag indicating the historical status of the relationship (C – Current, H – Historical, B – Both, NA - N/A, U – Undetermined)"
+    t.integer "rel_type_code", null: false, comment: "Relationship type"
+    t.string "start_date", comment: "Historical start date of relationship"
+    t.integer "subjecta_id", null: false, comment: "ID number of first subject in the associative relationship"
+    t.integer "subjectb_id", null: false, comment: "ID number of second subject in the associative relationship"
+  end
 
   create_table "subject_rels", id: false, comment: "The subject relationships table contains all preferred and non-preferred parent-child relationships in the AAT hierarchy.", force: :cascade do |t|
     t.string "display_date", comment: "Label for relationship date information"
