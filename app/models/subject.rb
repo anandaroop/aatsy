@@ -14,4 +14,8 @@ class Subject < ApplicationRecord
   def preferred_term
     terms.find_by(preferred: 'P')
   end
+
+  #tmp utils
+  def self.sample; offset(rand(count)).limit(1).first; end
+  def self.bronze; find(300010957); end
 end
