@@ -53,6 +53,16 @@ namespace :data do
       puts command
       system command
     end
+
+    # SKIP import for now, data file is very inconsistent (lots of missing fields)
+    desc "The language relationship table contains links between terms and a controlled set of languages. In subject records, only one term can be preferred for each language in a particular subject"
+    task language_rels: :environment do
+      database = ActiveRecord::Base.connection.current_database
+      path = File.join(Rails.root, "data", "LANGUAGE_RELS.out")
+      command = %Q{psql #{database} -c "COPY language_rels (language_code, preferred, subject_id, term_id, qualifier, term_type, part_of_speech, lang_stat) FROM '#{path}' DELIMITER E'\t'"}
+      puts command
+      system command
+    end
   end
 end
 
