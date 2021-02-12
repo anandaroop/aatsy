@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_060556) do
+ActiveRecord::Schema.define(version: 2021_02_12_131205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(version: 2021_02_12_060556) do
     t.string "term_type", null: false, comment: "Term type"
     t.string "part_of_speech", null: false, comment: "Flag to indicate term part of speech for a particular language (U - Undetermined, N - Noun, PN - Plural Noun SN - Singular Noun G - Singular and Plural Gerund, PP - Past Participle VN - Verbal Noun AJ - Adjectival, NA - N/A)"
     t.string "lang_stat", null: false, comment: "Language status flag used to indicate loan terms (U - Undetermined NA - N/A, L - Loan Term )"
+  end
+
+  create_table "scope_notes", primary_key: "scope_note_id", id: { comment: "Unique ID for a scope note record" }, comment: "Descriptive notes linked to a subject record associated with a particular language", force: :cascade do |t|
+    t.integer "subject_id", null: false, comment: "ID of subject record related to scope note"
+    t.string "language_code", null: false, comment: "Numeric code indicating the language of the descriptive note"
+    t.text "note_text", null: false, comment: "The descriptive note text"
   end
 
   create_table "subject_rels", id: false, comment: "The subject relationships table contains all preferred and non-preferred parent-child relationships in the AAT hierarchy.", force: :cascade do |t|

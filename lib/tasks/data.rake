@@ -15,7 +15,7 @@ namespace :data do
   end
 
   desc "Import all tables"
-  task import: ["import:subjects", "import:terms", "import:subject_rels", "import:associative_rels"]
+  task import: ["import:subjects", "import:terms", "import:subject_rels", "import:associative_rels", "import:scope_notes"]
 
   namespace :import do
     desc "The subject table is the base table for all AAT records"
@@ -60,6 +60,15 @@ namespace :data do
       database = ActiveRecord::Base.connection.current_database
       path = File.join(Rails.root, "data", "LANGUAGE_RELS.out")
       command = %Q{psql #{database} -c "COPY language_rels (language_code, preferred, subject_id, term_id, qualifier, term_type, part_of_speech, lang_stat) FROM '#{path}' DELIMITER E'\t'"}
+      puts command
+      system command
+    end
+
+    desc "Descriptive notes linked to a subject record associated with a particular language"
+    task scope_notes: :environment do
+      database = ActiveRecord::Base.connection.current_database
+      path = File.join(Rails.root, "data", "SCOPE_NOTES.out")
+      command = %Q{psql #{database} -c "COPY scope_notes (scope_note_id, subject_id, language_code, note_text) FROM '#{path}' DELIMITER E'\t'"}
       puts command
       system command
     end
