@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_131205) do
+ActiveRecord::Schema.define(version: 2021_02_12_142610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 2021_02_12_131205) do
     t.string "start_date", comment: "Historical start date of relationship"
     t.integer "subjecta_id", null: false, comment: "ID number of first subject in the associative relationship"
     t.integer "subjectb_id", null: false, comment: "ID number of second subject in the associative relationship"
+  end
+
+  create_table "facet_codes", primary_key: "code", id: { type: :string, comment: "Short code for an AAT facet or subfacet" }, comment: "Derived table of AAT facet codes", force: :cascade do |t|
+    t.string "name", null: false, comment: "Name of an AAT facet or subfacet"
+    t.integer "subject_id", comment: "Root Subject node of the facet or subfacet"
   end
 
   create_table "language_rels", id: false, comment: "The language relationship table contains links between terms and a controlled set of languages. In subject records, only one term can be preferred for each language in a particular subject.", force: :cascade do |t|
