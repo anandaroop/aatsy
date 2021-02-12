@@ -1,0 +1,22 @@
+<nav class="ancestors">
+<%- @subject.ancestors.each do |a| %>
+  <%= link_to a.name, subject_path(a.id), class: "ancestor" %> &gt;
+<%- end %>
+</nav>
+
+<nav class="up">
+<%- if @subject.parent.present? %>
+  <%= link_to "Up", subject_path(@subject.parent&.id), class: "parent" %>
+<%- end %>
+</nav>
+
+<h1><%= @subject.name %></h1>
+
+<ul class="children">
+<%- @subject.children.order(:name).each do |c| %>
+  <li>
+  <%= link_to c.name, subject_path(c.id), class: "child" %>
+  </li>
+<%- end %>
+</ul>
+

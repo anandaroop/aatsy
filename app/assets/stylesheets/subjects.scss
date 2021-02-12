@@ -1,3 +1,22 @@
 // Place all the styles related to the subjects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+body {
+  font-size: 1.2rem;
+  padding: 1em;
+}
+
+.up {
+  margin: 2em 0 1em 0;
+}
+
+a.ancestor {
+  display: inline-block;
+  padding: 0.25em;
+}
+
+a.child {
+  display: block;
+  padding: 0.5em;
+}
