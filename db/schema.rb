@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_050241) do
+ActiveRecord::Schema.define(version: 2021_02_12_051306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,9 @@ ActiveRecord::Schema.define(version: 2021_02_12_050241) do
     t.string "record_type", comment: "Subject record type (C – Concept F – Facet G – Guide term H – Hierarchy name)"
     t.integer "sort_order", null: false, comment: "Sort order of subject record among preferred parent siblings.If all preferred parent sibling order numbers are 1, then the sort is alphabetical. Otherwise, the order is based on the sort order column"
     t.string "special_proj", comment: "Name of special project associated with subject record"
+    t.string "ancestry"
+    t.integer "ancestry_depth", default: 0
+    t.index ["ancestry"], name: "index_subjects_on_ancestry"
   end
 
   create_table "terms", primary_key: "term_id", id: { comment: "Number identifying a unique term record" }, comment: "The term table contains the various vocabulary entries ('terms' in AAT) for each subject record. One term for each subject must be declared 'preferred' (column 'preferred' = 'P') to form the subject record's overall title or label. Each subject record must have one and only one preferred term.", force: :cascade do |t|

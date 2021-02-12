@@ -64,6 +64,25 @@ namespace :data do
       system command
     end
   end
+
+  namespace :ancestry do
+    desc "Rebuild ancestry path and depth information"
+    task rebuild: :environment do
+      puts <<~EOF
+      This is going to take a while. For details...
+
+      tail -f log/development.log
+
+      EOF
+      puts "Building ancestry from parent_ids..."
+      Subject.build_ancestry_from_parent_ids!
+      puts "Rebuilding depth_cache..."
+      Subject.rebuild_depth_cache!
+      puts "Checking ancestry integrity..."
+      Subject.check_ancestry_integrity!
+      puts "Done."
+    end
+  end
 end
 
 namespace :db do
@@ -73,3 +92,4 @@ namespace :db do
   desc "Start over from scratch (╯°□°)╯︵ ┻━┻"
   task rebuild: ["db:drop", "db:build"]
 end
+
