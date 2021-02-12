@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_11_191355) do
+ActiveRecord::Schema.define(version: 2021_02_12_050241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_191355) do
     t.string "facet_code", comment: "Facet code"
     t.string "legacy_id", comment: "ID of subject record in prior system"
     t.string "merged_stat", null: false, comment: "Merge status (M – Merged N – Not merged )"
-    t.integer "parent_key", null: false, comment: "Subject ID of preferred parent"
+    t.integer "parent_id", comment: "Subject ID of preferred parent"
     t.string "record_type", comment: "Subject record type (C – Concept F – Facet G – Guide term H – Hierarchy name)"
     t.integer "sort_order", null: false, comment: "Sort order of subject record among preferred parent siblings.If all preferred parent sibling order numbers are 1, then the sort is alphabetical. Otherwise, the order is based on the sort order column"
     t.string "special_proj", comment: "Name of special project associated with subject record"
