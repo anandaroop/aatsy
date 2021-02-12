@@ -1,6 +1,7 @@
 class Subject < ApplicationRecord
   has_ancestry cache_depth: true
   has_many :terms
+  has_many :scope_notes
 
   FACETS = {
     activities: 300264090,
@@ -49,6 +50,11 @@ class Subject < ApplicationRecord
 
   def ancestor_map
     @ancestor_map = ancestor_names.zip(ancestor_ids).to_h
+  end
+
+  def scope_note
+    # english code, by default
+    scope_notes.find_by(language_code: 70051)&.note_text
   end
 
   #tmp utils
