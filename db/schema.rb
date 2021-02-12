@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_051306) do
+ActiveRecord::Schema.define(version: 2021_02_12_060556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2021_02_12_051306) do
     t.string "special_proj", comment: "Name of special project associated with subject record"
     t.string "ancestry"
     t.integer "ancestry_depth", default: 0
+    t.string "name"
     t.index ["ancestry"], name: "index_subjects_on_ancestry"
   end
 
