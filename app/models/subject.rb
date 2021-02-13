@@ -14,6 +14,13 @@ class Subject < ApplicationRecord
     styles_and_periods: 300264088,
   }
 
+  RECORD_TYPES = {
+    'C' => "Concept",
+    'F' => "Facet",
+    'G' => "Guide term",
+    'H' => "Hierarchy name"
+  }
+
   # CLASS METHODS
 
   # The root of the AAT hierarchy, identified by a special id
@@ -42,6 +49,15 @@ class Subject < ApplicationRecord
 
   def subfacet
     ancestors[2]
+  end
+
+  def facet_from_code
+    return unless facet_code.present?
+    FacetCode.find(facet_code)&.subject
+  end
+
+  def record_type_name
+    RECORD_TYPES[record_type]
   end
 
   def ancestor_names

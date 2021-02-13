@@ -8,6 +8,11 @@
 <%- if @subject.parent.present? %>
   <%= link_to "Up", subject_path(@subject.parent&.id), class: "parent" %>
 <%- end %>
+<!--
+<%#- if facet = @subject.facet_from_code %>
+  | Facet: <%#= link_to facet.name, subject_path(facet) %>
+<%#- end %>
+-->
 </nav>
 
 <h1><%= @subject.name %></h1>
