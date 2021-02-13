@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 body {
+  font-family: sans-serif;
   font-size: 1.2rem;
   padding: 1em;
 }
@@ -42,27 +43,19 @@ a.ancestor {
 }
 
 .record-type-C {
-  background: hsl(0, 70%, 95%);
+  color: hsl(0, 50%, 40%);
 }
 
 .record-type-F {
-  background: hsl(90, 70%, 95%);
+  color: hsl(90, 50%, 40%);
 }
 
 .record-type-G {
-  background: hsl(180, 70%, 95%);
+  color: hsl(180, 50%, 40%);
 }
 
 .record-type-H {
-  background: hsl(270, 70%, 95%);
-}
-
-h1 {
-  padding-left: 0.25em;
-}
-
-ul.children li {
-  margin: 0.5em 0;
+  color: hsl(270, 50%, 40%);
 }
 
 a.child {
