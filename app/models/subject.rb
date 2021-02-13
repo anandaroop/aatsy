@@ -78,4 +78,29 @@ class Subject < ApplicationRecord
   #tmp utils
   def self.sample; offset(rand(count)).limit(1).first; end
   def self.bronze; find(300010957); end
+
+  # Can follow the query search syntax:
+  # https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-query-string-query.html#query-string-syntax
+  #
+  # For example:
+  #
+  # Subject.console_search('"bronze age" name:"bronze age"^2 NOT record_type:C')
+  #
+  # To
+  # - search for a phrase everywhere,
+  # - but boost results with the phrase in the preferred term name
+  # - filter out results which are Concepts
+  #
+  def self.console_search(q)
+    Subject.search(q).records.order(:ancestry_depth).map do |s|
+      "\n%s %s %s\n%s\n%s\n%s" % [
+        s.name.bold,
+        s.ancestors[1] && s.ancestors[1].name.split[0].green,
+        s.record_type_name.light_blue,
+        (s.ancestor_names[2..] || []).join(" ‣ ").cyan,
+        s.scope_note,
+        s.terms.map(&:term).join("; ").light_black
+      ]
+    end
+  end
 end
