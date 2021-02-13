@@ -1,6 +1,6 @@
 <nav class="ancestors">
 <%- @subject.ancestors.each do |a| %>
-  <%= link_to a.name, subject_path(a.id), class: "ancestor" %> &gt;
+  <%= link_to a.name, subject_path(a.id), class: "ancestor record-type-#{a.record_type }" %> &gt;
 <%- end %>
 </nav>
 
@@ -15,17 +15,29 @@
 -->
 </nav>
 
-<h1><%= @subject.name %></h1>
+
+<h1 class="record-type-<%= @subject.record_type %>">
+  <%= @subject.name %>
+
+  <span class="record-type-name record-type-<%= @subject.record_type %>">
+    <%= @subject.record_type_name %>
+  <span>
+</h1>
+
 
 <p><%= @subject.scope_note %></p>
-
-<p class="debug"><%= debug @subject.attributes %></p>
 
 <ul class="children">
 <%- @subject.children.order(:name).each do |c| %>
   <li>
-  <%= link_to c.name, subject_path(c.id), class: "child" %>
+    <a href="<%= subject_path(c.id) %>" class="child record-type-<%= c.record_type %>">
+      <%= c.name %>
+      <span class="record-type-name record-type-<%= c.record_type %>">
+        <%= c.record_type_name %>
+      <span>
+    </a>
   </li>
 <%- end %>
 </ul>
 
+<p class="debug"><%= debug @subject.attributes %></p>

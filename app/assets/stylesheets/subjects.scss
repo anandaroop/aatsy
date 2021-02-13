@@ -12,15 +12,61 @@ body {
 }
 
 .debug_dump {
-  color: gray;
+  color: lightgray;
 }
 
 a.ancestor {
   display: inline-block;
   padding: 0.25em;
+  text-decoration: none;
+}
+
+.record-type-name {
+  font-size: 1rem;
+
+  &.record-type-C {
+    color: hsl(0, 50%, 70%);
+  }
+
+  &.record-type-F {
+    color: hsl(90, 50%, 70%);
+  }
+
+  &.record-type-G {
+    color: hsl(180, 50%, 70%);
+  }
+
+  &.record-type-H {
+    color: hsl(270, 50%, 70%);
+  }
+}
+
+.record-type-C {
+  background: hsl(0, 70%, 95%);
+}
+
+.record-type-F {
+  background: hsl(90, 70%, 95%);
+}
+
+.record-type-G {
+  background: hsl(180, 70%, 95%);
+}
+
+.record-type-H {
+  background: hsl(270, 70%, 95%);
+}
+
+h1 {
+  padding-left: 0.25em;
+}
+
+ul.children li {
+  margin: 0.5em 0;
 }
 
 a.child {
   display: block;
   padding: 0.5em;
+  text-decoration: none;
 }
