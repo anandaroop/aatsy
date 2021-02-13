@@ -1,12 +1,12 @@
 <nav class="ancestors">
 <%- @subject.ancestors.each do |a| %>
-  <%= link_to a.name, subject_path(a.id), class: "ancestor record-type-#{a.record_type }" %> &gt;
+  <%= link_to a.name, subject_path(a.id), class: "ancestor record-type-#{a.record_type }" %> ▸
 <%- end %>
 </nav>
 
 <nav class="up">
 <%- if @subject.ancestors.last.present? %>
-  <%= link_to "Up", subject_path(@subject.ancestors.last&.id), class: "parent" %>
+  <span style="color: gray">▲</span> <%= link_to "Up", subject_path(@subject.ancestors.last&.id), class: "parent" %>
 <%- end %>
 <!--
 <%#- if facet = @subject.facet_from_code %>
@@ -24,17 +24,24 @@
   <span>
 </h1>
 
+<p class="scope_note">
+  <%= @subject.scope_note %>
+</p>
 
-<p><%= @subject.scope_note %></p>
+<p class="terms">
+  <strong>Terms</strong>:
+  <%= @subject.terms.map(&:name).join(", ") %>
+</p>
 
 <ul class="children">
-<%- @subject.children.order(:name).each do |c| %>
+<%- @subject.children.order(:record_type, :name).each do |c| %>
   <li>
     <a href="<%= subject_path(c.id) %>" class="child record-type-<%= c.record_type %>">
-      <%= c.name %>
+      <strong><%= c.name %></strong>
       <span class="record-type-name record-type-<%= c.record_type %>">
-        <%= c.record_type_name %>
+        <%= c.record_type_name %>,
       <span>
+      <%= c.child_ids.length %> children
     </a>
   </li>
 <%- end %>
