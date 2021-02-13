@@ -5,8 +5,8 @@
 </nav>
 
 <nav class="up">
-<%- if @subject.parent.present? %>
-  <%= link_to "Up", subject_path(@subject.parent&.id), class: "parent" %>
+<%- if @subject.ancestors.last.present? %>
+  <%= link_to "Up", subject_path(@subject.ancestors.last&.id), class: "parent" %>
 <%- end %>
 <!--
 <%#- if facet = @subject.facet_from_code %>
