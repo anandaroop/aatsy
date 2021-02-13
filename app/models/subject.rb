@@ -1,4 +1,6 @@
 class Subject < ApplicationRecord
+  include Elasticsearch::Model
+
   has_ancestry cache_depth: true
   has_many :terms
   has_many :scope_notes
