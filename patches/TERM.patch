@@ -1,0 +1,70 @@
+--- data/TERM.out	2020-10-27 12:49:56.000000000 -0400
++++ ../../aatsy/data/TERM.out	2021-02-10 17:46:13.000000000 -0500
+@@ -201801,8 +201801,7 @@
+ NA		NA	10		C	NA	V		300003295	trapspil hanger	1000609802	U
+ NA		NA	9		C	NA	V		300003295	trapspil hangers	1000609803	U
+ NA		NA	3		C	NA	V		300003359	balustrade onderregels	1000609804	U
+-NA		NA	4		C	NA	V		300003359	balustrade onderregel
+-	1000609805	U
++NA		NA	4		C	NA	V		300003359	balustrade onderregel	1000609805	U
+ NA		NA	11		C	NA	V		300133322	heliografie	1000492365	U
+ NA		NA	8		C	NA	V		300003395	vlinderverbindingen	1000609806	U
+ NA		NA	9		C	NA	V		300003395	vlinderverbinding	1000609807	U
+@@ -273859,8 +273858,7 @@
+ NA		NA	7		C	NA	V		300127363	droge folie	1000611093	U
+ NA		NA	13		C	NA	V		300127406	super coating	1000611094	U
+ NA		NA	12		C	NA	V		300127430	thermische ijsopslagsystemen	1000611095	U
+-NA		NA	13		C	NA	V		300127430	thermische ijsopslagsystemen
+-	1000611096	U
++NA		NA	13		C	NA	V		300127430	thermische ijsopslagsystemen	1000611096	U
+ NA		NA	14		C	NA	V		300127431	hellend tongewelf	1000611097	U
+ NA		NA	13		C	NA	V		300127431	hellende tongewelven	1000611098	U
+ NA		NA	8		C	NA	V		300127699	matig geelachtig bruin	1000611099	U
+@@ -274244,12 +274242,10 @@
+ NA		NA	10		C	NA	V		300033593	druksleutels	1000610490	U
+ NA		NA	8		C	NA	V		300033656	paneelschilderij	1000610491	U
+ NA		NA	9		C	NA	V		300033656	paneelschilderijen	1000610492	U
+-NA		NA	14		C	NA	V		300033914	ASCII-kunstwerk
+-	1000610493	U
++NA		NA	14		C	NA	V		300033914	ASCII-kunstwerk	1000610493	U
+ NA		NA	13		C	NA	V		300033914	ASCII-kunstwerken	1000610494	U
+ NA		NA	6		C	NA	V		300033988	elevation oblique drawing	1000610495	U
+-NA		NA	8		C	NA	V		300034258	verschoven doorsnedes
+-	1000610496	U
++NA		NA	8		C	NA	V		300034258	verschoven doorsnedes	1000610496	U
+ NA		NA	9		C	NA	V		300034258	verschoven doorsnede	1000610497	U
+ NA		NA	6		C	NA	V		300036416	stoffeernagel	1000610498	U
+ NA		NA	5		C	NA	V		300036416	stoffeernagels	1000610499	U
+@@ -274506,8 +274502,7 @@
+ NA		NA	14		C	NA	V		300039865	hoek wastafelmeubel	1000610592	U
+ NA		NA	24		C	NA	V		300039958	in elkaar passende tafels	1000610593	U
+ NA		NA	25		C	NA	V		300039958	in elkaar passende tafel	1000610594	U
+-NA		NA	11		C	NA	V		300040253	zwaan-armleuningen
+-	1000610595	U
++NA		NA	11		C	NA	V		300040253	zwaan-armleuningen	1000610595	U
+ NA		NA	12		C	NA	V		300040253	zwaan-armleuning	1000610596	U
+ NA		NA	9		C	NA	V		300040435	spiraalmatrassen	1000610597	U
+ NA		NA	10		C	NA	V		300040435	spiraalmatras	1000610598	U
+@@ -274781,8 +274776,7 @@
+ NA		NA	12		C	NA	V		300179961	dievenlantaarn	1000611314	U
+ NA		NA	4		C	NA	V		300180134	zwarte lantaarns	1000611315	U
+ NA		NA	5		C	NA	V		300180134	zwarte lantaarn	1000611316	U
+-NA		NA	4		C	NA	V		300181221	breedtelampen
+-	1000611319	U
++NA		NA	4		C	NA	V		300181221	breedtelampen	1000611319	U
+ NA		NA	5		C	NA	V		300181221	breedtelamp	1000611320	U
+ NA		NA	15		C	NA	V		300181306	fresnellantarens	1000611321	U
+ NA		NA	16		C	NA	V		300181306	fresnellantaren	1000611322	U
+@@ -329839,10 +329833,8 @@
+ NA		NA	6		C	NA	V		300395644	staakmadonna's	1000643580	U
+ NA		NA	7		C	NA	V		300395644	staakmadonna	1000643581	U
+ NA		NA	2		C	NA	V		300400565	kalamijn	1000643582	U
+-NA		NA	5		C	NA	V		300400631	grafspelonken
+-	1000643587	U
+-NA		NA	6		C	NA	V		300400631	grafspelonk
+-	1000643588	U
++NA		NA	5		C	NA	V		300400631	grafspelonken	1000643587	U
++NA		NA	6		C	NA	V		300400631	grafspelonk	1000643588	U
+ NA		NA	7		C	NA	V		300400702	ringwalburcht	1000643589	U
+ NA		NA	8		C	NA	V		300400702	ringwalburchten	1000643590	U
+ NA		NA	4		C	NA	V		300400732	klapcamera's	1000643591	U

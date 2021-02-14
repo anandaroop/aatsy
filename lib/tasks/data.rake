@@ -14,6 +14,16 @@ namespace :data do
     system command
   end
 
+  desc "Apply patches to get data files compatibile with psql COPY"
+  task :patch do
+    command = "patch data/SCOPE_NOTES.out patches/SCOPE_NOTES.patch"
+    puts command
+    system command
+    command = "patch data/TERM.out patches/TERM.patch"
+    puts command
+    system command
+  end
+
   desc "Import all tables"
   task import: ["import:subjects", "import:terms", "import:subject_rels", "import:associative_rels", "import:scope_notes"]
 
