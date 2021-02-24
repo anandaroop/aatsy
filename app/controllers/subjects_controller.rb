@@ -29,7 +29,7 @@ class SubjectsController < ApplicationController
   end
 
   def complete
-    @subjects = Subject.complete(params[:q], size: 2)
+    @subjects = Subject.complete(params[:q], size: 7)
 
     respond_to do |format|
       format.json { render json: @subjects }

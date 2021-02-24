@@ -101,16 +101,18 @@ class Subject < ApplicationRecord
 
   # for perf reasons, returns search hits directly from ES index, not db-backed instances
   def self.complete(prefix, options = {})
+      size = options.delete(:size || 5)
       body = {
       suggest: {
         subjects: {
           prefix: prefix,
           completion: {
-            field: "suggest"
+            field: "suggest",
+            size: size
           }
         }
       }
-    }.merge(options) # from, size, etc
+    }
 
     Subject.search(body).response['suggest']['subjects'].first['options']
   end
