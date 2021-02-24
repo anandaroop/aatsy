@@ -1,6 +1,11 @@
 class SubjectsController < ApplicationController
   def show
     @subject = Subject.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @subject }
+    end
   end
 
   def random
