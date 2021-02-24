@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Aatsy</title>
+    <title>AATsy</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <%= link_to "AATsy", root_path %>
+        <%= link_to "random subject", random_subjects_path, method: :get, class: "random" %>
+        <%= link_to "random material", random_material_subjects_path, method: :get, class: "random-material" %>
+      </nav>
+    </header>
+
     <%= yield %>
   </body>
 </html>

@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ header nav {
+   margin: 0 0 1em 0;
+ }
