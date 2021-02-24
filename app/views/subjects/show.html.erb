@@ -28,7 +28,7 @@
   <%= @subject.scope_note %>
 </p>
 
-<p class="terms">
+<p class="sans-3-medium">
   <strong>Terms</strong>:
   <%= @subject.terms.map(&:name).join(", ") %>
 </p>
@@ -51,9 +51,9 @@
 <%- end %>
 </ul>
 
-<p class="debug"><%= debug @subject.attributes %></p>
+<!-- <p class="debug"><%= debug @subject.attributes %></p> -->
 
 <p>
-  <%= link_to getty_aat_url(@subject.id), getty_aat_url(@subject.id), target: "aat" %>
+  <%= link_to getty_aat_url(@subject.id), getty_aat_url(@subject.id), target: "aat", class: "sans-4-medium" %>
 </p>
 
