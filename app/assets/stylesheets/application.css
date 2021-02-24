@@ -14,6 +14,32 @@
  *= require_self
  */
 
- header nav {
-   margin: 0 0 1em 0;
- }
+body {
+  font-family: sans-serif;
+  font-size: 1.2rem;
+  padding: 1em;
+}
+
+header {
+  border-bottom: solid 1px #ccc;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav a {
+  color: black;
+}
+
+header nav #logo {}
+
+header nav #controls {}
+
+header nav #controls > * {
+  margin-left: 1em;
+}

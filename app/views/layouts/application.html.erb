@@ -13,10 +13,14 @@
   <body>
     <header>
       <nav>
-        <%= link_to "AATsy", root_path %>
-        <%= link_to "random subject", random_subjects_path, method: :get, class: "random" %>
-        <%= link_to "random material", random_material_subjects_path, method: :get, class: "random-material" %>
-        <%= render template: "autocomplete" %>
+        <div id="logo">
+          <%= link_to "AATsy", root_path %>
+        </div>
+        <div id="controls">
+          <%= link_to "random subject", random_subjects_path, method: :get, class: "random" %>
+          <%= link_to "random material", random_material_subjects_path, method: :get, class: "random-material" %>
+          <%= render template: "autocomplete" %>
+        </div>
       </nav>
     </header>
 
