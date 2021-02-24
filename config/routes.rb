@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: "subjects#index"
+
   resources :subjects do
     collection do
       get 'random'

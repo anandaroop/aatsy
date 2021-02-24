@@ -1,4 +1,8 @@
 class SubjectsController < ApplicationController
+  def index
+    redirect_to Subject.root
+  end
+
   def show
     @subject = Subject.find(params[:id])
 
