@@ -3,7 +3,7 @@ class Subject < ApplicationRecord
   index_name "aatsy_subjects"
 
   has_ancestry cache_depth: true
-  has_many :terms
+  has_many :terms, -> { order(display_order: :asc) }
   has_many :scope_notes
 
   FACETS = {
