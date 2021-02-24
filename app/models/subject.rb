@@ -59,13 +59,39 @@ class Subject < ApplicationRecord
     end
   end
 
-  # returns db-backed instances
   def self.query(term, options = {})
     body = {
       query: {
         multi_match: {
           query: term,
           fields: [ "name^10", "scope_note^5", "terms^3", "ancestor_names"]
+        }
+      }
+    }.merge(options) # from, size, etc
+
+    Subject.search(body)
+  end
+
+  def self.materials_query(term, options = {})
+    body = {
+      query: {
+        bool: {
+          must: {
+            multi_match: {
+              query: term,
+              fields: [
+                "name^10",
+                "scope_note^5",
+                "terms^3"
+              ],
+              type: "best_fields"
+            }
+          },
+          filter: {
+            term: {
+              facet_name: "Materials"
+            }
+          }
         }
       }
     }.merge(options) # from, size, etc

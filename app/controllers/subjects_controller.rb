@@ -16,6 +16,14 @@ class SubjectsController < ApplicationController
     end
   end
 
+  def search_materials
+    @subjects = Subject.materials_query(params[:q])
+
+    respond_to do |format|
+      format.json { render json: @subjects }
+    end
+  end
+
   def complete
     @subjects = Subject.complete(params[:q], size: 2)
 
