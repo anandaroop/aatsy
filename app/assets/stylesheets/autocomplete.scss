@@ -1,4 +1,4 @@
-#autocomplete div,
+#autocomplete > div,
 #autocomplete ul,
 #autocomplete li {
   margin: 0;
@@ -18,7 +18,7 @@
 
 #autocomplete__input {
   font-size: 1rem;
-  width: 20em;
+  width: 25em;
   padding: 0.5em;
 }
 
@@ -26,16 +26,38 @@
   position: absolute;
   background: white;
   box-shadow: 0 5px 10px #00000033;
-  min-width: 20em;
+  width: 25em;
 }
 
-.autocomplete__results__hit {}
+.autocomplete__results__hit {
+}
 
 .autocomplete__results__hit a {
   display: block;
   padding: 0.5em;
   text-decoration: none;
-  &:hover, &:focus {
-    background: #eee
+  &:hover,
+  &:focus {
+    background: #eee;
+  }
+}
+
+#autocomplete__results {
+  .hit__meta {
+    font-size: 85%;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    .hit__type {
+      color: var(--color-black60);
+      font-weight: bold;
+    }
+
+    .hit__preview {
+      color: var(--color-black30);
+      margin-left: 0.5em;
+    }
   }
 }
