@@ -64,7 +64,7 @@ class Subject < ApplicationRecord
     body = {
       query: {
         multi_match: {
-          query: "bronze",
+          query: term,
           fields: [ "name^10", "scope_note^5", "terms^3", "ancestor_names"]
         }
       }
