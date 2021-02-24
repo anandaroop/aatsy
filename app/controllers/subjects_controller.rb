@@ -8,6 +8,22 @@ class SubjectsController < ApplicationController
     end
   end
 
+  def search
+    @subjects = Subject.query(params[:q])
+
+    respond_to do |format|
+      format.json { render json: @subjects }
+    end
+  end
+
+  def complete
+    @subjects = Subject.complete(params[:q], size: 2)
+
+    respond_to do |format|
+      format.json { render json: @subjects }
+    end
+  end
+
   def random
     redirect_to Subject.sample
   end
