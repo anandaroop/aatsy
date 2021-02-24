@@ -33,6 +33,10 @@
   <%= @subject.terms.map(&:name).join(", ") %>
 </p>
 
+<%- if @subject.has_children? %>
+  <h2>Children</h2>
+<%- end %>
+
 <ul class="children">
 <%- @subject.children.order(:record_type, :name).each do |c| %>
   <li>
