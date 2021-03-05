@@ -1,24 +1,21 @@
-# README
+# AATsy (sry)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Things:
 
-Things you may want to cover:
+- Automating the build process: `rake db:build`
+  - Relies on preprocessing the TSVs to make them ingestible — still tk as rake task
 
-* Ruby version
+- Using Rails to bootstrap a CLI lol
+  - See `Subject.console_search` and `colorize` gem
 
-* System dependencies
+- The ES `suggest` query
+  - See `Subject` `mappings` as well as `#as_indexed_json`, `#suggestions`, `.complete`
 
-* Configuration
+- `Ancestry` gem for hierarchies as materialized paths
+  - See how simple it makes
 
-* Database creation
+- Palette outside of JS
 
-* Database initialization
+- Very handy to just log out all ES queries based on env var
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- DIY accessible-ish autocomplete in 50 LOC
