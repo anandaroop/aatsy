@@ -1,4 +1,12 @@
 namespace :data do
+  desc "Obtain and ready data for import"
+  task prepare: ["data:clean", "data:download", "data:patch", ]
+  
+  desc "Clean downloaded files from /data directory"
+  task :clean do
+    FileUtils.rm Dir.glob("./data/*")
+  end
+  
   desc "Download latest AAT data dump from Getty (http://aatdownloads.getty.edu/)"
   task :download do
     # data dump files
@@ -22,17 +30,20 @@ namespace :data do
     command = "patch data/TERM.out patches/TERM.patch"
     puts command
     system command
+    command = "patch data/LANGUAGE_RELS.out patches/LANGUAGE_RELS.patch"
+    puts command
+    system command
   end
 
   desc "Import all tables"
-  task import: ["import:subjects", "import:terms", "import:subject_rels", "import:associative_rels", "import:scope_notes"]
+  task import: ["import:subjects", "import:terms", "import:subject_rels", "import:associative_rels", "import:language_rels", "import:scope_notes"]
 
   namespace :import do
     desc "The subject table is the base table for all AAT records"
     task subjects: :environment do
       database = ActiveRecord::Base.connection.current_database
       path = File.join(Rails.root, "data", "SUBJECT.out")
-      command = %Q{psql #{database} -c "COPY subjects (facet_code, legacy_id, merged_stat, parent_key, record_type, sort_order, special_proj, subject_id) FROM '#{path}' DELIMITER E'\t'"}
+      command = %Q{psql #{database} -c "COPY subjects (facet_code, legacy_id, merged_stat, parent_id, record_type, sort_order, special_proj, subject_id) FROM '#{path}' DELIMITER E'\t'"}
       puts command
       system command
     end
@@ -64,7 +75,6 @@ namespace :data do
       system command
     end
 
-    # SKIP import for now, data file is very inconsistent (lots of missing fields)
     desc "The language relationship table contains links between terms and a controlled set of languages. In subject records, only one term can be preferred for each language in a particular subject"
     task language_rels: :environment do
       database = ActiveRecord::Base.connection.current_database
@@ -106,9 +116,12 @@ end
 
 namespace :db do
   desc "Create the database from scratch"
-  task build: ["db:create", "db:migrate", "data:import"]
-
-  desc "Start over from scratch (╯°□°)╯︵ ┻━┻"
+  task build: ["db:setup", "data:import"]
+  
+  desc "Re-create the database from scratch"
   task rebuild: ["db:drop", "db:build"]
+
+  desc "Create (or recreate) the database from scratch with a fresh Getty data dump"
+  task bootstrap: ["data:prepare", "db:rebuild"]
 end
 
